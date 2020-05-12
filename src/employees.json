@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Ashley Rodriguez",
+        "title": "Lead Engineer",
+        "department": "Engineering"
+    },
+    {
+        "id": 2,
+        "name": "John Doe",
+        "title": "Sales Lead",
+        "department": "Sales"
+    },
+    {
+        "id": 3,
+        "name": "Sarah Lourd",
+        "title": "Legal Team Lead",
+        "department": "Legal"
+    },
+    {
+        "id": 4,
+        "name": "Kevin Tupik",
+        "title": "Software Engineer",
+        "department": "Engineering"
+    },
+    {
+        "id": 5,
+        "name": "Mike Chan",
+        "title": "Salesperson",
+        "department": "Sales"
+    },
+    {
+        "id": 6,
+        "name": "Tom Allen",
+        "title": "Lawyer",
+        "department": "Legal"
+    },
+    {
+        "id": 7,
+        "name": "Malia Brown",
+        "title": "Accountant",
+        "department": "Finance"
+    }
+]
