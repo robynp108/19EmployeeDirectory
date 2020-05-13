@@ -9,6 +9,14 @@ class App extends Component {
     employees
   };
 
+  handleInputChange = event => {
+
+  };
+
+  handleFormSubmit = event => {
+
+  };
+
   render() {
     return (
       <div>
@@ -43,7 +51,7 @@ class App extends Component {
             name="sort"
             onChange={this.handleInputChange}
             type="text"
-            placeholder="Sort by category"
+            placeholder="Sort by department"
           />
           <br></br>
           <button onClick={this.handleFormSubmit}>Submit</button>
