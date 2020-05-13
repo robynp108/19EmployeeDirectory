@@ -29,6 +29,25 @@ class App extends Component {
             ))}
           </table>
         </div>
+        <form className="form">
+          <input
+            // value={this.state.firstName}
+            name="filter"
+            onChange={this.handleInputChange}
+            type="text"
+            placeholder="Filter by name"
+          />
+          <br></br>
+          <input
+            // value={this.state.lastName}
+            name="sort"
+            onChange={this.handleInputChange}
+            type="text"
+            placeholder="Sort by category"
+          />
+          <br></br>
+          <button onClick={this.handleFormSubmit}>Submit</button>
+        </form>
       </div>
     );
   }
