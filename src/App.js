@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
 import employees from "./employees.json";
 import EmployeeCard from "./components/EmployeeCard";
+
+function compare( a, b ) {
+  if ( a.name < b.name ){
+    return -1;
+  }
+  if ( a.name > b.name ){
+    return 1;
+  }
+  return 0;
+}
 
 class App extends Component {
   state = {
     employees: employees,
-    sortbyname: {},
-    filterbydept: {}
+    userChoice: "0"
   };
 
   handleInputChange = event => {
-
+    this.setState({ userChoice: event.target.value }, () => console.log(this.state));
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+
+  // };
 
   render() {
+    let employeeList = this.state.employees;
+    if (this.state.userChoice === "1") {
+      employeeList = employeeList.sort(compare);
+    } else if (this.state.userChoice === "2") {
+      employeeList = employeeList.filter(employee => employee.department === "Engineering");
+    } else {
+      employeeList = this.state.employees;
+    }
+    
+    
+    console.log(employeeList);
+
     return (
       <div className="container">
         <h2>Employee Directory</h2>
@@ -33,44 +52,27 @@ class App extends Component {
                 <th scope="col">Department</th>
               </tr>
             </thead>
-            {this.state.employees.map(employee => (
-              <EmployeeCard
-                name={employee.name}
-                title={employee.title}
-                department={employee.department}
-              />
-            ))}
+            <tbody>
+              {employeeList.map(employee => (
+                <EmployeeCard
+                  name={employee.name}
+                  title={employee.title}
+                  department={employee.department}
+                />
+              ))}
+            </tbody>
           </table>
         </div>
-        {/* <form classNameName="form">
-          <input
-            // value={this.state.firstName}
-            name="filter"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Filter by name"
-          />
-          <br></br>
-          <input
-            // value={this.state.lastName}
-            name="sort"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Sort by department"
-          />
-          <br></br>
-          <button onClick={this.handleFormSubmit}>Submit</button>
-        </form> */}
         <div className="input-group">
-            <select className="custom-select" id="inputGroupSelect04">
-              <option selected>Options...</option>
-              <option value="1">Sort alphabetically by name</option>
-              <option value="2">Filter by department</option>
-            </select>
-            <div className="input-group-append">
-              <button className="btn btn-outline-secondary" type="button">Submit</button>
-            </div>
+          <select className="custom-select" id="inputGroupSelect04" onChange={this.handleInputChange}>
+            <option value="0" selected>Options...</option>
+            <option value="1">Sort alphabetically by name</option>
+            <option value="2">Filter by engineers</option>
+          </select>
+          <div className="input-group-append">
+            <button className="btn btn-outline-secondary" type="button">Submit</button>
           </div>
+        </div>
       </div>
     );
   }
